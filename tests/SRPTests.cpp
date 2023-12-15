@@ -104,6 +104,8 @@ TEST_P(SRPTest, SRPAuthentication) {
     
     Buffer M2;
     ASSERT_TRUE(server.verifySession(A, M1, M2));
+    EXPECT_FALSE(server.sessionKey().empty());
     
     ASSERT_TRUE(client.verifySession(M2));
+    EXPECT_FALSE(client.sessionKey().empty());
 }
