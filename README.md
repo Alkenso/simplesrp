@@ -1,5 +1,7 @@
 # simplesrp
-SRP 6a implementation in C++ compatible with Apple's `corecrypto` library
+SRP 6a implementation in C++ compatible with Apple's `corecrypto` library.
+Compatible with macOS, Windows, Linux.
+Requires support of C++17 compiler but does NOT use any C++14/17 specific libraries.
 
 SRP (Secure Remote Protocol) is auhtentication protocol that prevent
 user password or its derivatives from being sent over the network.
@@ -11,6 +13,18 @@ and [RFC2945](https://datatracker.ietf.org/doc/html/rfc2945).
 - SRPClient: client part of the protocol
 - SRPServer: server part of the protocol
 - SRPVerifierGenerator: functional to generate verifier (identity) on registration
+
+## Build
+CMake is used for build the library and tests.
+Options:
+- explicit OpenSSL dependency (if `find_package` fails in some reason): `-DOPENSSL_ROOT_DIR=/path/to/openssl`
+- enable building of unit-tests: `-DSIMPLESRP_TESTING_ENABLE=ON`
+
+```
+mkdir build && cd build
+cmake /path/to/simplesrp.git
+make
+```
 
 ## Example
 ```
